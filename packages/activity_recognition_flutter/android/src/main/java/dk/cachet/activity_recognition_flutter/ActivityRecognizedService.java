@@ -33,6 +33,7 @@ public class ActivityRecognizedService extends JobIntentService {
     // remove override and make onHandleIntent private.
     private void onHandleIntent(@Nullable Intent intent) {
         ActivityRecognitionResult result = ActivityRecognitionResult.extractResult(intent);
+        if(result == null) return;
         List<DetectedActivity> activities = result.getProbableActivities();
 
         DetectedActivity mostLikely = activities.get(0);
